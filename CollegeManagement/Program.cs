@@ -1,9 +1,10 @@
 using CollegeManagement.Data;
+using CollegeManagement.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddApplicationServices();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<CollegeManagementDbContext>(options =>
     options.UseSqlServer(
