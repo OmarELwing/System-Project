@@ -9,6 +9,8 @@ public static class ServiceRegistration
     {
         services.AddScoped<IDoctorRepository, DoctorRepository>();
         services.AddScoped<IDoctorService, DoctorService>();
+        services.AddScoped<IStudentRepository, StudentRepository>();
+        services.AddScoped<IStudentService, StudentService>();
 
         return services;
     }
