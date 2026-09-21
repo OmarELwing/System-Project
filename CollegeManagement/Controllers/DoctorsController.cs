@@ -24,5 +24,15 @@ namespace CollegeManagement.Controllers
             }
             return Ok(dashboard);
         }
+        [HttpGet("subjects")]
+        public async Task<ActionResult> GetSubjects(long doctorId)
+        {
+            var subjects = await _doctorService.GetSubjectAsync(doctorId);
+            if (subjects == null)
+            {
+                return NotFound("There are no subjects yet.");
+            }
+            return Ok(subjects);
+        }
     }
 }

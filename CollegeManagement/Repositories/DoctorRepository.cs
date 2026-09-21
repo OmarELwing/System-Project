@@ -21,5 +21,13 @@ namespace CollegeManagement.Repositories
                 .ThenInclude(sd => sd.Classroom)
             .FirstOrDefaultAsync(d => d.Id == doctorId);
         }
+
+        public async Task<IEnumerable<Subject>?> GetSubjectDataAsync(long doctorId)
+        {
+            return await _context.SubjectDoctors
+                .Where(sd => sd.DoctorId == doctorId)
+                .Select(sd => sd.Subject)
+                .ToListAsync();
+        }
     }
 }
