@@ -43,6 +43,22 @@ namespace CollegeManagement.Services
                 }
             }
             return dashboard;
-        }        
+        }
+
+        public async Task<IEnumerable<SubjectDto>?> GetSubjectAsync(long doctorId)
+        {
+            var subjects = await _doctorRepository.GetSubjectDataAsync(doctorId);
+            if (subjects == null)
+            {
+                return null;
+            }
+            var subjectDtos =  subjects.Select(s => new SubjectDto
+            {
+                Code = s.Code,
+                Name = s.Name,
+                Description = s.Description
+            });
+            return subjectDtos;
+        }
     }
 }
